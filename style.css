@@ -30,10 +30,12 @@ header {
 
 main {
 	grid-area: main;
-	background: lightgrey;
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	background: url("images/beyonce-COB-bw.png");
+  background-position: center bottom;
+  background-size: cover;
 }
 
 /*********** HEADER **************/
@@ -56,7 +58,7 @@ main {
 .main__section {
 	height: 55%;
 	width: 60%;
-	border: 1px solid blue;
+/*	border: 1px solid blue;*/
 }
 
 .main__left--section {
