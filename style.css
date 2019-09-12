@@ -4,11 +4,11 @@
 	box-sizing: border-box;
 	font-family: 'Open Sans', sans-serif;
 }
-
+/*
 * {
 	border: 1px solid red;
 }
-
+*/
 body {
 	height: 100vh;
 	display: grid;
@@ -51,26 +51,51 @@ main {
 	float: left;
 	height: 100%;
 	width: 7%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.nav__menu--icon {
+	width: 65px;
+	height: 65px;
 }
 
 /************** MAIN **************/
 
 .main__section {
 	height: 55%;
-	width: 60%;
-/*	border: 1px solid blue;*/
+	width: 50%;
 }
 
 .main__left--section {
-	height: 100%;
 	width: 50%;
+	height: 45%;
 	float: left;
 }
 
 .main__right--section {
-	height: 100%;
 	width: 50%;
+	height: 45%;
 	float: left;
 }
+
+#js__player1--input,
+#js__player2--input {
+  width: 82%;
+  height: 37px;
+	background: #ffffff;
+	border: none;
+}
+
+#js__play--button {
+	height: 37px;
+	width: 100%;
+	background: #000000;
+	color: #ffffff;
+	font-size: 18px;
+}
+
+
 
 
