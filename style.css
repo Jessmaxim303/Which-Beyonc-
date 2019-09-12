@@ -1,0 +1,21 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	height: 120vh;
+	display: grid;
+	grid-template-areas: 
+    "header header"
+    "main main"
+    "main main";
+  grid-template-rows: 30% 25%;
+  grid-template-columns: 15% 85%;
+}
+
+header {
+	
+}
+
