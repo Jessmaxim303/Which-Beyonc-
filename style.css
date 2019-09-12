@@ -96,6 +96,15 @@ main {
 	font-size: 18px;
 }
 
+.js__user--inputs {
+/*	border: 1px solid blue;*/
+	display: block;
+}
+
+.js__inputs--classlist {
+	/*border: 1px solid red;*/
+	display: none;
+}
 
 
 

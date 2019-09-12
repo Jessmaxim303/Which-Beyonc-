@@ -1,5 +1,6 @@
 var jsPlayer1Input = document.getElementById("js__player1--input");
 var jsPlayButton = document.getElementById("js__play--button");
+var inputCard = document.querySelector('.js__user--inputs');
 
 // GLOBAL VARIABLES *********************
 
@@ -18,7 +19,11 @@ function gameRules(e) {
 }
 
 function deleteUserInputs(e) {
-		console.log('delete user inputs');
-	// if (e.target.classList.contains("js__user--inputs") {
-	// })
+	console.log(inputCard);
+	inputCard.classList.add('js__inputs--classlist');
 }
+
+
+  // if (e.target.classList.contains("section__img--delete")){
+  //   removeCard(e);
+  // }
