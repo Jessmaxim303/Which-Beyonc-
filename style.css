@@ -4,11 +4,11 @@
 	box-sizing: border-box;
 	font-family: 'Open Sans', sans-serif;
 }
-/*
-* {
+
+/** {
 	border: 1px solid red;
-}
-*/
+}*/
+
 body {
 	height: 100vh;
 	display: grid;
@@ -64,47 +64,93 @@ main {
 /************** MAIN **************/
 
 .main__section {
-	height: 55%;
-	width: 50%;
+	height: 70%;
+	width: 55%;
+	display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+/*  align-items: ;*/
+/*  border: 2px dotted red;*/
 }
 
 .main__left--section {
-	width: 50%;
-	height: 45%;
-	float: left;
+	height: 55%;
+  width: 90%;
+
 }
 
 .main__right--section {
-	width: 50%;
+	width: 40%;
 	height: 45%;
 	float: left;
 }
 
-#js__player1--input,
-#js__player2--input {
-  width: 82%;
-  height: 37px;
+.js__player1--input,
+.js__player2--input {
+	width: 255px;
+  height: 40px;
 	background: #ffffff;
 	border: none;
+	font-size: 16px;
+	color: #3F3F3F;
+	padding-left: 8px;
 }
 
 #js__play--button {
-	height: 37px;
+	height: 40px;
 	width: 100%;
 	background: #000000;
 	color: #ffffff;
 	font-size: 18px;
+	margin-top: 10%;
 }
 
 .js__user--inputs {
-/*	border: 1px solid blue;*/
 	display: block;
+	display: flex;
+  flex-direction: row;
 }
 
-.js__inputs--classlist {
-	/*border: 1px solid red;*/
+.js__inputs--display {
 	display: none;
 }
+
+.js__game--rules {
+	display: none;
+	height: 65%;
+	width: 100%; 
+	display: none;
+}
+
+.js__game--display {
+	display: inline-block;
+	height: 75%;
+	width: 100%; 
+}
+
+#game__rules--container {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+#game__rule--list {
+	margin: 3% 0;
+}
+
+#game__empty--message {
+	margin: 7px;
+	color: #F94B20;
+	font-size: 16px;
+	font-style: italic;
+	font-weight: 600;
+}
+
+.input__error {
+	border: 2px solid #F94B20;
+}
+
+
 
 
 
