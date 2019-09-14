@@ -97,6 +97,7 @@ function insertGameRules() {
      </container>`);
 };
 
+
 function addGameCard() {
 	mainSection.classList.add('js__display--none');
 	main.classList.add('game__section--grid');
