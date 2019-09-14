@@ -11,6 +11,7 @@ var jsGameSection = document.querySelector('.js__game--section');
 var mainSection = document.querySelector('.main__section');
 var gameSection = document.querySelector('.game__section');
 var gameCardText = document.querySelector('.game__card');
+var jsP1Header = document.querySelector('.js__p1--header');
 var playerArray = [];
 
 
@@ -35,7 +36,7 @@ function gameRulesCard() {
 		insertGameRules();
 	};
 
-}
+};
 
 function flipCard(e) {
 	if (e.target.id === 'card-a') {
@@ -70,10 +71,9 @@ function flipCard(e) {
 		e.target.classList.add('card-5');
 	}	
 
-}
+};
 
 function deleteUserInputs() {
-	console.log('delete card')
 	inputCard.classList.add('js__display--none');
 }
 
@@ -109,10 +109,18 @@ function insertGameRules() {
      </container>`);
 };
 
-
 function addGameCard() {
 	mainSection.classList.add('js__display--none');
 	main.classList.add('game__section--grid');
+	addPlayerName();
+}
+
+function addPlayerName() {
+	console.log('player one name!')
+	jsP1Header.insertAdjacentHTML('afterbegin',
+    `<container id="game__player1--name">
+    	<h3>${jsPlayer1Input.value}</h3>
+     </container>`);
 }
 
 function EmptyFieldAlert() {

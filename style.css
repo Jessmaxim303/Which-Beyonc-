@@ -210,10 +210,10 @@ main {
 	height: 100%;
   width: 125px;
   display: inline-block;
-	border: 1px solid blacK;
-	font-size: 74px;
+	border: 2px solid #000000;
+  font-size: 90px;
   text-align: center;
-  padding-top: 43px;
+  padding-top: 34px;
   background: #ffffff;
 }
 
