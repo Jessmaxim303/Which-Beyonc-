@@ -31,8 +31,8 @@ main {
 	align-items: center;
 	justify-content: center;
 	background: url("images/beyonce-COB-bw.png");
-  background-position: center bottom;
-  background-size: cover;
+	background-position: 50% 48%;
+  background-size: 170%;
 }
 
 /*********** HEADER **************/
@@ -160,13 +160,6 @@ main {
   flex-direction: row;
 }
 
-/*.player__game--area {
-	grid-area: game;
-	background: lightblue;
-	height: 100%;
-	width: 100%;
-}*/
-
 .player1__stats--column {
 	float: left;
 	background: #000000;
@@ -225,23 +218,33 @@ main {
 }
 
 .card-1 {
+	background-position: 45% 60%;
+  background-size: 307%;
 	background-image: url("images/bey1.jpg");
 }
 
-.card-1 {
-	background-image: url("images/bey1.jpg");
+.card-2 {
+	background-position: 40% 50%;
+  background-size: 170%;
+	background-image: url("images/bey2.jpg");
 }
 
-.card-1 {
-	background-image: url("images/bey1.jpg");
+.card-3 {
+	background-position: 45% 60%;
+  background-size: 145%;
+	background-image: url("images/bey3.jpeg");
 }
 
-.card-1 {
-	background-image: url("images/bey1.jpg");
+.card-4 {
+	background-position: 45% 60%;
+	background-size: 145%;
+	background-image: url("images/bey4.jpg");
 }
 
-.card-1 {
-	background-image: url("images/bey1.jpg");
+.card-5 {
+	background-position: 45% 60%;
+  background-size: 307%;
+	background-image: url("images/bey5.jpg");
 }
 
 #card-a {

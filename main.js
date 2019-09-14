@@ -10,12 +10,14 @@ var gameRulesContainer = document.getElementById('.game__rules--container');
 var jsGameSection = document.querySelector('.js__game--section');
 var mainSection = document.querySelector('.main__section');
 var gameSection = document.querySelector('.game__section');
+var gameCardText = document.querySelector('.game__card');
 var playerArray = [];
 
 
 // EVENT LISTENERS **********************
 jsPlayButton.addEventListener('click', gameRulesCard);
 gameSection.addEventListener('click', flipCard);
+
 
 // FUNCTIONS ****************************
 function gameRulesCard() {
@@ -37,26 +39,36 @@ function gameRulesCard() {
 
 function flipCard(e) {
 	if (e.target.id === 'card-a') {
-		console.log('card a')
+		e.target.innerHTML = '';
+		e.target.classList.add('card-1');
 	} else if (e.target.id === 'card-b') {
-		console.log('card b')
+		e.target.innerHTML = '';
+    e.target.classList.add('card-2');		
 	} else if (e.target.id === 'card-c') {
-		console.log('card c')
+		e.target.innerHTML = '';
+		e.target.classList.add('card-3');
 	} else if (e.target.id === 'card-d') {
-		console.log('card d')
+		e.target.innerHTML = '';
+		e.target.classList.add('card-4');
 	} else if (e.target.id === 'card-e') {
-		console.log('card e')
+		e.target.innerHTML = '';
+		e.target.classList.add('card-5');
 	} else if (e.target.id === 'card-f') {
-		console.log('card f')
+		e.target.innerHTML = '';
+		e.target.classList.add('card-1');
 	} else if (e.target.id === 'card-g') {
-		console.log('card g')
+		e.target.innerHTML = '';
+		e.target.classList.add('card-2');
 	} else if (e.target.id === 'card-h') {
-		console.log('card h')
+		e.target.innerHTML = '';
+		e.target.classList.add('card-3');
 	} else if (e.target.id === 'card-i') {
-		console.log('card i')
+		e.target.innerHTML = '';
+		e.target.classList.add('card-4');
 	} else if (e.target.id === 'card-j') {
-		console.log('card j')
-	}
+		e.target.innerHTML = '';
+		e.target.classList.add('card-5');
+	}	
 
 }
 
