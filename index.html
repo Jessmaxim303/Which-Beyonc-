@@ -7,7 +7,6 @@
 	<title>Which Beyonce?</title>
 </head>
 <body>
-
 	<header>
 		<div class="header__menu--container">
 		 <img  class="nav__menu--icon" src="images/menu.svg" alt="Drop menu button"/>
@@ -15,7 +14,7 @@
 		<h1 class="header__h1--text">Which Beyoncé?</h1>
 	</header>
 
-	<main>
+	<main class="main">
 
 		<section class="main__section">
 
@@ -27,26 +26,78 @@
 					<p>PLAYER 1</p>
 				</div>
 			</section>
-
 			<section class="main__right--section">
 				<div class="main__player2--container">
 					<input class="js__player2--input" maxlength="32">
 					<p>PLAYER 2</p>
 				</div>
 			</section>
-
 			</div>
-
 			<div class="js__game--rules">
 			</div>
-
 				<button id="js__play--button">PLAY GAME</button>
 			<div class="js__empty--error">
 		  </div>
 
 		</section>
 
+		<section class="js__game--section">
+
+    	<section class="player1__stats--column">
+    		<h4>
+    			player 1
+    		</h4>
+    		<h4>
+    			#top 4 player
+    		</h4>
+    		<div class="player1__matches--played">
+    			<h4>MATCHES THIS ROUND</h4>
+    			<h1>5</h1>
+    		</div>
+    		<div>GAME WINS</div>
+     		<p>ROUND 1</p>
+     		<p>125.75 SECONDS</p>
+    	</section>
+
+			<section class="game__section">
+				<div class="game__row--a">
+					<div class="game__card card-1" id="card-a">B</div>
+					<div class="game__card " id="card-b">B</div>
+					<div class="game__card" id="card-c">B</div>
+				</div>	
+				<div class="game__row--b">
+					<div class="game__card" id="card-d">B</div>
+					<div class="game__card" id="card-e">B</div>
+					<div class="game__card" id="card-f">B</div>
+					<div class="game__card" id="card-g">B</div>
+				</div>
+				<div class="game__row--c">
+					<div class="game__card" id="card-h">B</div>
+					<div class="game__card" id="card-i">B</div>
+					<div class="game__card" id="card-j">B</div>
+				</div>
+			</section>
+
+    	<section class="player2__stats--column">
+    		<h4>
+    			player 2
+    		</h4>
+    		<h4>
+    			#top 2 player
+    		</h4>
+    		<div class="player1__matches--played">
+    			<h4>MATCHES THIS ROUND</h4>
+    			<h1>3</h1>
+    		</div>
+    		<div>GAME WINS</div>
+     		<p>ROUND 1</p>
+     		<p>125.75 SECONDS</p>
+    	</section>
+
+		</section>
+
 	</main>
+
 </body>
 	<script src="main.js"></script>
 </html>
