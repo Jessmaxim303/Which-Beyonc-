@@ -1,43 +1,85 @@
+// GLOBAL VARIABLES *********************
 var jsPlayer1Input = document.querySelector(".js__player1--input");
 var jsPlayButton = document.getElementById("js__play--button");
 var inputCard = document.querySelector('.js__user--inputs');
 var gameRules = document.querySelector('.js__game--rules');
 var jsEmptyError = document.querySelector('.js__empty--error');
-
-// GLOBAL VARIABLES *********************
+var jsGameCard = document.querySelector('.js__game--card');
+var main = document.querySelector('.main');
+var gameRulesContainer = document.getElementById('.game__rules--container');
+var jsGameSection = document.querySelector('.js__game--section');
+var mainSection = document.querySelector('.main__section');
+var gameSection = document.querySelector('.game__section');
+var playerArray = [];
 
 
 // EVENT LISTENERS **********************
 jsPlayButton.addEventListener('click', gameRulesCard);
-
+gameSection.addEventListener('click', flipCard);
 
 // FUNCTIONS ****************************
-
 function gameRulesCard() {
-	console.log('game time')
+	console.log('game time');
+	if (playerArray.length > 0) {
+		console.log('booyah');
+		removeGameRules();
+		addGameCard();
+		addGameDisplay();
+	};
 	if (jsPlayer1Input.value === "") {
-		console.log('hello')
-    EmptyFieldAlert()
+    EmptyFieldAlert();
 	} else {
-	// deleteUserInputs();
-	addGameRules();
+    playerArray.push(jsPlayer1Input.value);
+		insertGameRules();
+	};
+
+}
+
+function flipCard(e) {
+	if (e.target.id === 'card-a') {
+		console.log('card a')
+	} else if (e.target.id === 'card-b') {
+		console.log('card b')
+	} else if (e.target.id === 'card-c') {
+		console.log('card c')
+	} else if (e.target.id === 'card-d') {
+		console.log('card d')
+	} else if (e.target.id === 'card-e') {
+		console.log('card e')
+	} else if (e.target.id === 'card-f') {
+		console.log('card f')
+	} else if (e.target.id === 'card-g') {
+		console.log('card g')
+	} else if (e.target.id === 'card-h') {
+		console.log('card h')
+	} else if (e.target.id === 'card-i') {
+		console.log('card i')
+	} else if (e.target.id === 'card-j') {
+		console.log('card j')
 	}
+
 }
 
 function deleteUserInputs() {
 	console.log('delete card')
-	inputCard.classList.add('js__inputs--display');
-
-}
-
-function showGameRules() {
-	gameRules.classList.add('js__game--display');
+	inputCard.classList.add('js__display--none');
 }
 
 function addGameRules() {
+	gameRules.classList.add('js__game--display');
+}
+
+function removeGameRules() {
+	gameRules.classList.remove('js__game--display');
+}
+
+function addGameDisplay() {
+	jsGameSection.classList.add('js__card--display');
+}
+
+function insertGameRules() {
 	deleteUserInputs();
-	// deleteUserInputs();
-	showGameRules();
+	addGameRules();
    gameRules.insertAdjacentHTML('afterbegin',
     `<container id="game__rules--container">
     	<h3>Welcome ${jsPlayer1Input.value} and player 2!</h3>
@@ -55,8 +97,13 @@ function addGameRules() {
      </container>`);
 };
 
+
+function addGameCard() {
+	mainSection.classList.add('js__display--none');
+	main.classList.add('game__section--grid');
+}
+
 function EmptyFieldAlert() {
-	// console.log(jsEmptyError.innerText);
 	if (jsEmptyError.innerText === "") {
    jsEmptyError.insertAdjacentHTML('afterbegin',
     `<container id="game__empty--message">
@@ -65,6 +112,10 @@ function EmptyFieldAlert() {
 	}
 	jsPlayer1Input.classList.add('input__error');
 };
+
+
+
+
 
 
 
