@@ -14,6 +14,7 @@ var gameCardText = document.querySelector('.game__card');
 var jsP1Header = document.querySelector('.js__p1--header');
 var gameRowA = document.querySelector('.game__row--a');
 var cardsArray = [];
+var playerArray = [];
 var flipCounter = 0;
 var cardsArr = ['card-1', 'card-2', 'card-3', 'card-4', 'card-5'];
 
@@ -22,7 +23,6 @@ var cardsArr = ['card-1', 'card-2', 'card-3', 'card-4', 'card-5'];
 jsPlayButton.addEventListener('click', gameRulesCard);
 gameSection.addEventListener('click', flipTwoOnly);
 window.addEventListener('load', instantiateCardArray());
-
 
 // FUNCTIONS ****************************
 function gameRulesCard() {
@@ -146,10 +146,10 @@ function addPlayerName() {
 function instantiateCardArray() {
 	var gameCards = document.querySelectorAll('.game__card');
     for (var i = 0; i < gameCards.length; i++) {
-    var queenBey= gameCards[i].id;
-    	var cards = new Card({matchInfo: queenBey, matched: false, flipped: false});
+    	var cards = new Card({matchInfo: gameCards[i].id, matched: false, flipped: false});
     	cardsArray.push(cards);
   }
+  	console.log(cardsArray);
     return cardsArray;
 };
 
