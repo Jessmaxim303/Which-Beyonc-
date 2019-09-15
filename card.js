@@ -1,13 +1,8 @@
 class Card {
-
-	constructor(cards) {
-		this.matchInfo = cards.matchInfo;
-		this.matched = cards.matched;
-		this.flipped = cards.flipped;
-	}
-
-	match() {
+	constructor() {
+		// this.matchInfo = id;
+		// this.matched = false;
+		// this.flipped = false;
 	}
 	
-};
-
+}

@@ -41,9 +41,6 @@ main {
 	color: #000000;
 	text-align: center;
 	margin-top: 17px;
-	margin-left: -7%;
-	font-size: 30px;
-  font-weight: 400;
 }
 
 .header__menu--container {
@@ -64,6 +61,7 @@ main {
 /************** MAIN **************/
 
 .main__section {
+
 	height: 70%;
 	width: 55%;
 	display: flex;
@@ -170,7 +168,6 @@ main {
 	display: inline-block;
 	color: #ffffff;
 	padding: 1%;
-	text-align: center;
 }
 
 .player2__stats--column {
@@ -181,7 +178,6 @@ main {
 	display: inline-block;
 	color: #ffffff;
 	padding: 1%;
-	text-align: center;
 }
 
 .main__card--style {
@@ -289,14 +285,6 @@ main {
 
 #card-j {
 	transform: rotate(25deg);
-}
-
-.js__p1--header {
-	font-size: 14px;
-}
-
-.js__p1--header p {
-	font-weight: 300;
 }
 
 
