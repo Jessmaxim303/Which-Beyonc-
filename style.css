@@ -195,6 +195,11 @@ main {
 	margin: 23% 0;
 }
 
+.player1__matches--played h3 {
+	font-size: 16px;
+	font-weight: 300;
+}
+
 .game__section {
 	display: inline-block;
 }
@@ -213,7 +218,7 @@ main {
 .game__card {
 	height: 100%;
   width: 125px;
-  display: inline-block;
+/*  display: inline-block;*/
 	border: 2px solid #000000;
   font-size: 90px;
   text-align: center;
@@ -251,43 +256,43 @@ main {
 	background-image: url("images/bey5.jpg");
 }
 
-#card-a {
+.gc1 {
 	transform: rotate(-20deg);
 }
 
-#card-b {
+.gc2 {
 	transform: rotate(17deg);
 }
 
-#card-c {
+.gc3 {
 	transform: rotate(-2deg);
 }
 
-#card-d {
+.gc4 {
 	transform: rotate(-10deg);
 }
 
-#card-e {
+.gc5 {
 	transform: rotate(8deg);
 }
 
-#card-f {
+.gc6 {
 	transform: rotate(-23deg);
 }
 
-#card-g {
+.gc7 {
 	transform: rotate(-8deg);
 }
 
-#card-h {
+.gc8 {
 	transform: rotate(20deg);
 }
 
-#card-i {
+.gc9 {
 	transform: rotate(-15deg);
 }
 
-#card-j {
+.gc10 {
 	transform: rotate(25deg);
 }
 

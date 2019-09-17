@@ -13,18 +13,28 @@ var gameSection = document.querySelector('.game__section');
 var gameCardText = document.querySelector('.game__card');
 var jsP1Header = document.querySelector('.js__p1--header');
 var gameRowA = document.querySelector('.game__row--a');
+var jsScoreBoard1 = document.querySelector('.js__score--board1');
+var deck = new Deck();
+var matches = 0;
 var cardsArray = [];
 var playerArray = [];
+var matched = [];
 var flipCounter = 0;
-var cardsArr = ['card-1', 'card-2', 'card-3', 'card-4', 'card-5'];
+var cardID = cardID;
 
+var cardsArr = ['card-1', 'card-2', 'card-3', 'card-4', 'card-5'];
 
 // EVENT LISTENERS **********************
 jsPlayButton.addEventListener('click', gameRulesCard);
 gameSection.addEventListener('click', flipTwoOnly);
-window.addEventListener('load', instantiateCardArray());
+window.addEventListener('load', createClasses);
 
 // FUNCTIONS ****************************
+function createClasses() {
+	instantiateDeck();
+	instantiateCardArray();
+}
+
 function gameRulesCard() {
 	if (playerArray.length > 0) {
 		console.log('booyah');
@@ -44,49 +54,54 @@ function gameRulesCard() {
 function flipTwoOnly(e) {
 	if (flipCounter < 2) {
 		flipCard(e);
-	}
+	} 
 }
 
 function addBeyCard(e) {
 	flipCounter++;
-	console.log(flipCounter)
 	e.target.innerHTML = '';	
 }
 
+function updateCardFlipped(e) {
+	var deckCards = deck.cards;
+	for (var i = 0; i < deckCards.length; i++) {
+		if (e.target.dataset.name === deckCards[i].dataName) {
+	  deckCards[i].flipped = !this.flipped;
+	  deck.selectedCards.push(deckCards[i]);
+		}
+	}
+	// console.log(deckArray);
+	return cardsArray[i];
+}
+
 function flipCard(e) {
-	console.log(e);
 	if (e.target.id === 'card-a') {
 		addBeyCard(e);
+		updateCardFlipped(e);
 		e.target.classList.add('card-1');
 	} else if (e.target.id === 'card-b') {
-		addBeyCard(e)
-    e.target.classList.add('card-2');		
-	} else if (e.target.id === 'card-c') {
-		addBeyCard(e)
-		e.target.classList.add('card-3');
-	} else if (e.target.id === 'card-d') {
-		addBeyCard(e)
-		e.target.classList.add('card-4');
-	} else if (e.target.id === 'card-e') {
-		addBeyCard(e)
-		e.target.classList.add('card-5');
-	} else if (e.target.id === 'card-f') {
-		addBeyCard(e)
-		e.target.classList.add('card-1');
-	} else if (e.target.id === 'card-g') {
-		addBeyCard(e)
-		e.target.classList.add('card-2');
-	} else if (e.target.id === 'card-h') {
-		addBeyCard(e)
-		e.target.classList.add('card-3');
-	} else if (e.target.id === 'card-i') {
-		addBeyCard(e)
-		e.target.classList.add('card-4');
-	} else if (e.target.id === 'card-j') {
-		addBeyCard(e)
-		e.target.classList.add('card-5');
-	}	
+		addBeyCard(e);
+		updateCardFlipped(e);
+    e.target.classList.add('card-2');	
 
+	} else if (e.target.id === 'card-c') {
+		addBeyCard(e);
+		updateCardFlipped(e);
+		e.target.classList.add('card-3');
+
+	} else if (e.target.id === 'card-d') {
+		updateCardFlipped(e);
+		addBeyCard(e);
+		e.target.classList.add('card-4');
+
+	} else if (e.target.id === 'card-e') {
+		updateCardFlipped(e);
+		addBeyCard(e);
+		e.target.classList.add('card-5');
+	}  
+	// makeMatchedArray();
+	matchedCards();
+	// deleteMatchedCards();
 };
 
 function deleteUserInputs() {
@@ -122,12 +137,8 @@ function insertGameRules() {
 					After you play, you’ll see the name of the final winner and how long it took to win the game.
     		</p>
     	</p>
-     </container>`);
+    </container>`);
 };
-
-function insertCardInfo() {
-
-}
 
 function addGameCard() {
 	mainSection.classList.add('js__display--none');
@@ -143,23 +154,51 @@ function addPlayerName() {
      </container>`);
 }
 
+function addMatches() {
+	var sum = deck.matches / 2;
+	jsScoreBoard1.innerText = `${sum}`;
+};
+
+function instantiateDeck() {
+  var deck = new Deck();
+}
+
 function instantiateCardArray() {
 	var gameCards = document.querySelectorAll('.game__card');
     for (var i = 0; i < gameCards.length; i++) {
-    	var cards = new Card({matchInfo: gameCards[i].id, matched: false, flipped: false});
-    	cardsArray.push(cards);
+
+    	var cards = new Card({
+    		matchInfo: gameCards[i].id,
+    		matched: false,
+    		flipped: false,
+    		dataName: "gameCard" + [i]
+    	});
+  deck.cards.push(cards);
   }
-  	console.log(cardsArray);
-    return cardsArray;
+  	console.log(deck);
+}; 
+
+function findCardId(e) {
+  var cardID = e.target.closest(".game__card").getAttribute('data-name');
+  console.log(cardID);
+}
+ 
+function matchedCards() {
+		  deck.matches++;
+		if (deck.selectedCards[0].matchInfo === deck.selectedCards[1].matchInfo) {
+			deck.selectedCards[0].matched = true;
+			deck.selectedCards[1].matched = true;
+			deck.matchedCards.push(deck.selectedCards[0]);
+			deck.matchedCards.push(deck.selectedCards[1]);
+			deck.selectedCards[0].match();
+			deck.selectedCards[1].match();
+			deck.selectedCards = [];
+			flipCounter = 0;
+		}
+		console.log(deck.matches);
+		addMatches()
 };
 
-// function addRandomBey() {
-// 	var cardInfo = cardsArr[Math.floor(Math.random()*cardsArr.length)];
-// 	var beyCard = new Card(cardInfo);
-// 	return beyCard;
-// }
-
-// console.log(addRandomBey())
 
 function EmptyFieldAlert() {
 	if (jsEmptyError.innerText === "") {
@@ -171,6 +210,13 @@ function EmptyFieldAlert() {
 	jsPlayer1Input.classList.add('input__error');
 };
 
+// function addRandomBey() {
+// 	var cardInfo = cardsArr[Math.floor(Math.random()*cardsArr.length)];
+// 	var beyCard = new Card(cardInfo);
+// 	return beyCard;
+// }
+
+// console.log(addRandomBey())
 
 
 
