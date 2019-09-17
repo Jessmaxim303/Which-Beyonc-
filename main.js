@@ -14,6 +14,7 @@ var gameCardText = document.querySelector('.game__card');
 var jsP1Header = document.querySelector('.js__p1--header');
 var gameRowA = document.querySelector('.game__row--a');
 var jsScoreBoard1 = document.querySelector('.js__score--board1');
+var jsWinnerAlert = document.querySelector('.js__winner--alert');
 var deck = new Deck();
 var matches = 0;
 var cardsArray = [];
@@ -54,10 +55,6 @@ function gameRulesCard() {
 
 function flipTwoOnly(e) {
 	return (flipCounter < 2) ? flipCard(e) : flipBackCard(e);
-	// 	flipBackCard(e);
-	// if (flipCounter < 2) {
-	// 	flipCard(e);
-	// } 
 }
 
 function addBeyCard(e) {
@@ -76,7 +73,6 @@ function updateCardFlipped(e) {
 	return cardsArray[i];
 }
 
-// dataset.id matches e.target.dataset change back;
 function flipBackCard(e) {
 	console.log('FLIP BACK PLEASE!!!');
 	flipBackCounter++;
@@ -116,7 +112,6 @@ function flipCard(e) {
 	}  
 	matchedCards(e);
 };
-
 
 function deleteUserInputs() {
 	inputCard.classList.add('js__display--none');
@@ -206,16 +201,10 @@ function matchedCards(e) {
 			deck.matchedCards.push(deck.selectedCards[1]);
 			deck.selectedCards[0].match();
 			deck.selectedCards[1].match();
+			winnerWinner();
 			deck.selectedCards = [];
 			flipCounter = 0;
 		} 
-		// else {
-			// console.log(e)
-			// console.log('flip back cards!')
-			// e.target.innerHTML = 'B';
-			// e.target.classList.add('js__display--none');
-
-		// }
 		console.log(deck.matches);
 		addMatches()
 };
@@ -230,13 +219,19 @@ function EmptyFieldAlert() {
 	jsPlayer1Input.classList.add('input__error');
 };
 
-// function addRandomBey() {
-// 	var cardInfo = cardsArr[Math.floor(Math.random()*cardsArr.length)];
-// 	var beyCard = new Card(cardInfo);
-// 	return beyCard;
-// }
+function winnerWinner() {
+	var gameCards = document.querySelectorAll('.game__card');
+	console.log(gameCards.length);
+	if (deck.matches === 10) {
+		jsWinnerAlert.insertAdjacentHTML('afterbegin',
+    `<container id="game__winner--message">
+    	<section id="game__winner--container">
+    		<h1>Congratulations ${jsPlayer1Input.value}!</>
+    	</section>	
+     </container>`);
+	}
+}
 
-// console.log(addRandomBey())
 
 
 
