@@ -23,6 +23,9 @@ var matched = [];
 var flipCounter = 0;
 var flipBackCounter = 0;
 var cardID = cardID;
+var t0 = 0;
+var t1 = 0;
+var cleanTime = 0;
 
 var cardsArr = ['card-1', 'card-2', 'card-3', 'card-4', 'card-5'];
 
@@ -150,6 +153,7 @@ function insertGameRules() {
 };
 
 function addGameCard() {
+	t0 = performance.now();
 	mainSection.classList.add('js__display--none');
 	main.classList.add('game__section--grid');
 	addPlayerName();
@@ -220,6 +224,7 @@ function EmptyFieldAlert() {
 };
 
 function winnerWinner() {
+	t1 = performance.now();
 	var gameCards = document.querySelectorAll('.game__card');
 	console.log(gameCards.length);
 	if (deck.matches === 10) {
@@ -227,9 +232,19 @@ function winnerWinner() {
     `<container id="game__winner--message">
     	<section id="game__winner--container">
     		<h1>Congratulations ${jsPlayer1Input.value}!</>
+    		<h3>${cleanTime} Seconds!</h3>
     	</section>	
      </container>`);
 	}
+	gameTime();
+}
+
+function gameTime() {
+	var stopTime = t1 - t0;
+	var timeSeconds = stopTime / 1000;
+	cleanTime = timeSeconds.toFixed(1)
+	
+	console.log(cleanTime);
 }
 
 
