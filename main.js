@@ -20,6 +20,7 @@ var cardsArray = [];
 var playerArray = [];
 var matched = [];
 var flipCounter = 0;
+var flipBackCounter = 0;
 var cardID = cardID;
 
 var cardsArr = ['card-1', 'card-2', 'card-3', 'card-4', 'card-5'];
@@ -52,9 +53,11 @@ function gameRulesCard() {
 };
 
 function flipTwoOnly(e) {
-	if (flipCounter < 2) {
-		flipCard(e);
-	} 
+	return (flipCounter < 2) ? flipCard(e) : flipBackCard(e);
+	// 	flipBackCard(e);
+	// if (flipCounter < 2) {
+	// 	flipCard(e);
+	// } 
 }
 
 function addBeyCard(e) {
@@ -70,11 +73,23 @@ function updateCardFlipped(e) {
 	  deck.selectedCards.push(deckCards[i]);
 		}
 	}
-	// console.log(deckArray);
 	return cardsArray[i];
 }
 
+// dataset.id matches e.target.dataset change back;
+function flipBackCard(e) {
+	console.log('FLIP BACK PLEASE!!!');
+	flipBackCounter++;
+	e.target.innerHTML = 'B';
+	e.target.classList.remove('card-1');
+	e.target.classList.remove('card-2');
+	e.target.classList.remove('card-3');
+	e.target.classList.remove('card-4');
+	e.target.classList.remove('card-5');
+};
+
 function flipCard(e) {
+	console.log(e);
 	if (e.target.id === 'card-a') {
 		addBeyCard(e);
 		updateCardFlipped(e);
@@ -99,10 +114,9 @@ function flipCard(e) {
 		addBeyCard(e);
 		e.target.classList.add('card-5');
 	}  
-	// makeMatchedArray();
-	matchedCards();
-	// deleteMatchedCards();
+	matchedCards(e);
 };
+
 
 function deleteUserInputs() {
 	inputCard.classList.add('js__display--none');
@@ -183,7 +197,7 @@ function findCardId(e) {
   console.log(cardID);
 }
  
-function matchedCards() {
+function matchedCards(e) {
 		  deck.matches++;
 		if (deck.selectedCards[0].matchInfo === deck.selectedCards[1].matchInfo) {
 			deck.selectedCards[0].matched = true;
@@ -194,11 +208,17 @@ function matchedCards() {
 			deck.selectedCards[1].match();
 			deck.selectedCards = [];
 			flipCounter = 0;
-		}
+		} 
+		// else {
+			// console.log(e)
+			// console.log('flip back cards!')
+			// e.target.innerHTML = 'B';
+			// e.target.classList.add('js__display--none');
+
+		// }
 		console.log(deck.matches);
 		addMatches()
 };
-
 
 function EmptyFieldAlert() {
 	if (jsEmptyError.innerText === "") {

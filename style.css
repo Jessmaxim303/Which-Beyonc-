@@ -113,6 +113,10 @@ main {
 	display: none;
 }
 
+.js__background--none {
+	background: #ffffff;
+}
+
 .js__game--display {
 	display: inline-block;
 	height: 75%;
@@ -189,15 +193,20 @@ main {
 }
 
 .player1__matches--played {
-	height: 20%;
 	border-top: 2px solid white;
 	border-bottom: 2px solid white;
 	margin: 23% 0;
 }
 
-.player1__matches--played h3 {
-	font-size: 16px;
+.player1__matches--played h4 {
+	margin-top: 10px;
+	font-size: 18px;
 	font-weight: 300;
+}
+
+.player1__matches--played h1 {
+	font-size: 50px;
+  font-weight: 600;
 }
 
 .game__section {
