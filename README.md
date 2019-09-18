@@ -22,18 +22,8 @@ JavaScript
 
 ## Screenshots
 
-![comp1](https://github.com/Jessmaxim303/Which-Beyonc-/blob/master/images/sc1.png)<img src="https://github.com/lynnerang/dog-party-website/blob/master/screenshots/Mobile1.png" alt="Top of website on mobile">
+![camp1](https://github.com/Jessmaxim303/Which-Beyonc-/blob/master/images/sc1.png) alt="Game in zero state">
+![comp2](https://github.com/Jessmaxim303/Which-Beyonc-/blob/master/images/sc2.png) alt="error at inputs">
+![comp3](https://github.com/Jessmaxim303/Which-Beyonc-/blob/master/images/sc3.png) alt="Game in active state">
+![comp4](https://github.com/Jessmaxim303/Which-Beyonc-/blob/master/images/sc4.png) alt="Game in winner state!">
 
-
-## Setup
-
-View <a href="https://github.com/lynnerang/dog-party-website">here</a> on my GitHub.
-
-OR 
-
-Download and unzip the dog-party-website.zip file, and open the index.html file to view the website.
-
-
-## License
-
-All credit goes to Turing School of Software for providing the project specifications and website design.
