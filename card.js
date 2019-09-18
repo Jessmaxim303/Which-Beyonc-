@@ -9,6 +9,7 @@ class Card {
 
 	matchClear() {
 		if (deck.selectedCards[0].matchInfo === deck.selectedCards[1].matchInfo && deck.selectedCards[0].dataName !== deck.selectedCards[1].dataName) {
+			console.log('Match Clear');
 			document.querySelector(`.game__card[data-name="${this.dataName}"]`).classList.add('js__display--none');
 		}
 	}
