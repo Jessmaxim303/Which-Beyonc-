@@ -53,7 +53,7 @@ function flipTwoOnly(e) {
 	// flipBackCard(e);
 	} 
 	else if (deck.selectedCards.length === 2) {
-			flipBackCard(e);
+		flipBackCard(e);
 	}
 }
 
@@ -72,13 +72,18 @@ function updateCardFlipped(e) {
 }
 
 function flipBackCard(e) {
-	if (e.target.innerHTML === '') {
-		e.target.innerHTML = 'B';
-		e.target.classList.remove('card-1');
-		e.target.classList.remove('card-2');
-		e.target.classList.remove('card-3');
-		e.target.classList.remove('card-4');
-		e.target.classList.remove('card-5');
+	var gameCards = document.querySelectorAll('.game__card');
+	// var flippedCards = document.querySelectorAll('.game--card');
+	// console.log(gameCards);
+	// for (var i = 0; i < gameCards.length; i++)
+		if (e.target.innerHTML === '') {
+			e.target.innerHTML = 'B';
+			e.target.classList.remove('card-1');
+			e.target.classList.remove('card-2');
+			e.target.classList.remove('card-3');
+			e.target.classList.remove('card-4');
+			e.target.classList.remove('card-5');
+		deck.selectedCards.pop();
 	}
 };
 
@@ -179,13 +184,13 @@ function instantiateCardArray() {
  
 function matchedCards() {
 	console.log('matched cards')
-	deck.checkSelectedCards();
 	deck.moveToMatched();
-	deck.selectedCards[0].matchClear();
-	deck.selectedCards[1].matchClear();
+	deck.checkSelectedCards();
+	// deck.selectedCards[0].matchClear();
+	// deck.selectedCards[1].matchClear();
 	winnerWinner();
-	// deck.selectedCards = [];
 	addMatches();
+	// deck.selectedCards = [];
 };
 
 function EmptyFieldAlert() {
