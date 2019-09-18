@@ -3,10 +3,10 @@
 
 ## General Info
 
-<h4Learning goals.</h4>
-<p>Semantic HTML</p>
-<p>DRY JavaScript</p>
-<p>LocalStorage to persist data</p>
+Learning goals.
+Semantic HTML.
+DRY JavaScript
+LocalStorage to persist data
 
 
 ## Motivation
@@ -22,8 +22,8 @@ JavaScript
 
 ## Screenshots
 
-![camp1](https://github.com/Jessmaxim303/Which-Beyonc-/blob/master/images/sc1.png) alt="Game in zero state">
-![comp2](https://github.com/Jessmaxim303/Which-Beyonc-/blob/master/images/sc2.png) alt="error at inputs">
-![comp3](https://github.com/Jessmaxim303/Which-Beyonc-/blob/master/images/sc3.png) alt="Game in active state">
-![comp4](https://github.com/Jessmaxim303/Which-Beyonc-/blob/master/images/sc4.png) alt="Game in winner state!">
+![camp1](https://github.com/Jessmaxim303/Which-Beyonc-/blob/master/images/sc1.png) Game in zero state.
+![comp2](https://github.com/Jessmaxim303/Which-Beyonc-/blob/master/images/sc2.png) Error at inputs.
+![comp3](https://github.com/Jessmaxim303/Which-Beyonc-/blob/master/images/sc3.png) Game in active state.
+![comp4](https://github.com/Jessmaxim303/Which-Beyonc-/blob/master/images/sc4.png) Game in winner state!
 
