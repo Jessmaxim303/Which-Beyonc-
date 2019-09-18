@@ -12,25 +12,16 @@ var mainSection = document.querySelector('.main__section');
 var gameSection = document.querySelector('.game__section');
 var gameCardText = document.querySelector('.game__card');
 var jsP1Header = document.querySelector('.js__p1--header');
-var gameRowA = document.querySelector('.game__row--a');
 var jsScoreBoard1 = document.querySelector('.js__score--board1');
 var jsWinnerAlert = document.querySelector('.js__winner--alert');
 var deck = new Deck();
-var matches = 0;
-var cardsArray = [];
 var playerArray = [];
-var matched = [];
-var flipCounter = 0;
-var flipBackCounter = 0;
-var cardID = cardID;
-var t0 = 0;
-var t1 = 0;
+var timerStart = 0;
+var timerStop = 0;
 var cleanTime = 0;
 
-var cardsArr = ['card-1', 'card-2', 'card-3', 'card-4', 'card-5'];
-
 // EVENT LISTENERS **********************
-jsPlayButton.addEventListener('click', gameRulesCard);
+jsPlayButton.addEventListener('click', mainGameEvent);
 gameSection.addEventListener('click', flipTwoOnly);
 window.addEventListener('load', createClasses);
 
@@ -40,9 +31,8 @@ function createClasses() {
 	instantiateCardArray();
 }
 
-function gameRulesCard() {
+function mainGameEvent() {
 	if (playerArray.length > 0) {
-		console.log('booyah');
 		removeGameRules();
 		addGameCard();
 		addGameDisplay();
@@ -56,12 +46,13 @@ function gameRulesCard() {
 
 };
 
-function flipTwoOnly(e) {
-	return (flipCounter < 2) ? flipCard(e) : flipBackCard(e);
+function flipTwoOnly(e) { 
+	console.log(deck.cards.flipped);
+	flipCard(e);
+	flipBackCard(e);
 }
 
 function addBeyCard(e) {
-	flipCounter++;
 	e.target.innerHTML = '';	
 }
 
@@ -73,22 +64,20 @@ function updateCardFlipped(e) {
 	  deck.selectedCards.push(deckCards[i]);
 		}
 	}
-	return cardsArray[i];
 }
 
 function flipBackCard(e) {
-	console.log('FLIP BACK PLEASE!!!');
-	flipBackCounter++;
-	e.target.innerHTML = 'B';
-	e.target.classList.remove('card-1');
-	e.target.classList.remove('card-2');
-	e.target.classList.remove('card-3');
-	e.target.classList.remove('card-4');
-	e.target.classList.remove('card-5');
+	if (e.target.innerHTML === '') {
+		e.target.innerHTML = 'B';
+		e.target.classList.remove('card-1');
+		e.target.classList.remove('card-2');
+		e.target.classList.remove('card-3');
+		e.target.classList.remove('card-4');
+		e.target.classList.remove('card-5');
+	}
 };
 
 function flipCard(e) {
-	console.log(e);
 	if (e.target.id === 'card-a') {
 		addBeyCard(e);
 		updateCardFlipped(e);
@@ -97,23 +86,20 @@ function flipCard(e) {
 		addBeyCard(e);
 		updateCardFlipped(e);
     e.target.classList.add('card-2');	
-
 	} else if (e.target.id === 'card-c') {
 		addBeyCard(e);
 		updateCardFlipped(e);
 		e.target.classList.add('card-3');
-
 	} else if (e.target.id === 'card-d') {
 		updateCardFlipped(e);
 		addBeyCard(e);
 		e.target.classList.add('card-4');
-
 	} else if (e.target.id === 'card-e') {
 		updateCardFlipped(e);
 		addBeyCard(e);
 		e.target.classList.add('card-5');
 	}  
-	matchedCards(e);
+	matchedCards();
 };
 
 function deleteUserInputs() {
@@ -153,7 +139,7 @@ function insertGameRules() {
 };
 
 function addGameCard() {
-	t0 = performance.now();
+	timerStart = performance.now();
 	mainSection.classList.add('js__display--none');
 	main.classList.add('game__section--grid');
 	addPlayerName();
@@ -168,8 +154,7 @@ function addPlayerName() {
 }
 
 function addMatches() {
-	var sum = deck.matches / 2;
-	jsScoreBoard1.innerText = `${sum}`;
+	jsScoreBoard1.innerText = deck.matches;
 };
 
 function instantiateDeck() {
@@ -179,38 +164,22 @@ function instantiateDeck() {
 function instantiateCardArray() {
 	var gameCards = document.querySelectorAll('.game__card');
     for (var i = 0; i < gameCards.length; i++) {
-
     	var cards = new Card({
     		matchInfo: gameCards[i].id,
-    		matched: false,
-    		flipped: false,
     		dataName: "gameCard" + [i]
     	});
   deck.cards.push(cards);
   }
-  	console.log(deck);
 }; 
-
-function findCardId(e) {
-  var cardID = e.target.closest(".game__card").getAttribute('data-name');
-  console.log(cardID);
-}
  
-function matchedCards(e) {
-		  deck.matches++;
-		if (deck.selectedCards[0].matchInfo === deck.selectedCards[1].matchInfo) {
-			deck.selectedCards[0].matched = true;
-			deck.selectedCards[1].matched = true;
-			deck.matchedCards.push(deck.selectedCards[0]);
-			deck.matchedCards.push(deck.selectedCards[1]);
-			deck.selectedCards[0].match();
-			deck.selectedCards[1].match();
-			winnerWinner();
-			deck.selectedCards = [];
-			flipCounter = 0;
-		} 
-		console.log(deck.matches);
-		addMatches()
+function matchedCards() {
+	deck.checkSelectedCards();
+	deck.moveToMatched();
+	deck.selectedCards[0].matchClear();
+	deck.selectedCards[1].matchClear();
+	winnerWinner();
+	deck.selectedCards = [];
+	addMatches();
 };
 
 function EmptyFieldAlert() {
@@ -224,10 +193,9 @@ function EmptyFieldAlert() {
 };
 
 function winnerWinner() {
-	t1 = performance.now();
-	var gameCards = document.querySelectorAll('.game__card');
-	console.log(gameCards.length);
-	if (deck.matches === 10) {
+	timerStop = performance.now();
+	console.log(deck.matches)
+	if (deck.matches === 5) {
 		jsWinnerAlert.insertAdjacentHTML('afterbegin',
     `<container id="game__winner--message">
     	<section id="game__winner--container">
@@ -240,11 +208,9 @@ function winnerWinner() {
 }
 
 function gameTime() {
-	var stopTime = t1 - t0;
+	var stopTime = timerStop - timerStart;
 	var timeSeconds = stopTime / 1000;
 	cleanTime = timeSeconds.toFixed(1)
-	
-	console.log(cleanTime);
 }
 
 

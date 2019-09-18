@@ -2,13 +2,15 @@ class Card {
 
 	constructor(cards) {
 		this.matchInfo = cards.matchInfo;
-		this.matched = cards.matched;
-		this.flipped = cards.flipped;
+		this.matched = false;
+		this.flipped = false;
 		this.dataName = cards.dataName;
 	}
 
-	match() {
-		document.querySelector(`.game__card[data-name="${this.dataName}"]`).classList.add('js__display--none');
+	matchClear() {
+		if (deck.selectedCards[0].matchInfo === deck.selectedCards[1].matchInfo && deck.selectedCards[0].dataName !== deck.selectedCards[1].dataName) {
+			document.querySelector(`.game__card[data-name="${this.dataName}"]`).classList.add('js__display--none');
+		}
 	}
 
 	
