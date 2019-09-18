@@ -19,6 +19,7 @@ var playerArray = [];
 var timerStart = 0;
 var timerStop = 0;
 var cleanTime = 0;
+var click = 0;
 
 // EVENT LISTENERS **********************
 jsPlayButton.addEventListener('click', mainGameEvent);
@@ -47,9 +48,13 @@ function mainGameEvent() {
 };
 
 function flipTwoOnly(e) { 
-	console.log(deck.cards.flipped);
+	if (deck.selectedCards.length < 2) {
 	flipCard(e);
-	flipBackCard(e);
+	// flipBackCard(e);
+	} 
+	else if (deck.selectedCards.length === 2) {
+			flipBackCard(e);
+	}
 }
 
 function addBeyCard(e) {
@@ -57,11 +62,11 @@ function addBeyCard(e) {
 }
 
 function updateCardFlipped(e) {
-	var deckCards = deck.cards;
-	for (var i = 0; i < deckCards.length; i++) {
-		if (e.target.dataset.name === deckCards[i].dataName) {
-	  deckCards[i].flipped = !this.flipped;
-	  deck.selectedCards.push(deckCards[i]);
+	// var deckCards = deck.cards;
+	for (var i = 0; i < deck.cards.length; i++) {
+		if (e.target.dataset.name === deck.cards[i].dataName) {
+	  deck.cards[i].flipped = !this.flipped;
+	  deck.selectedCards.push(deck.cards[i]);
 		}
 	}
 }
@@ -173,12 +178,13 @@ function instantiateCardArray() {
 }; 
  
 function matchedCards() {
+	console.log('matched cards')
 	deck.checkSelectedCards();
 	deck.moveToMatched();
 	deck.selectedCards[0].matchClear();
 	deck.selectedCards[1].matchClear();
 	winnerWinner();
-	deck.selectedCards = [];
+	// deck.selectedCards = [];
 	addMatches();
 };
 
